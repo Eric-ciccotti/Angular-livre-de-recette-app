@@ -5,16 +5,14 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <ul class="list-group">
-            <li *ngFor="let recette of recettes" class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <h4>{{recette.nomRecette}}</h4>
-                    <p>{{recette.description}}</p>
-                </div>
-                <div class="">
-                    <img src={{recette.imageChemin}} class="img-thumbnail" alt="quixote">
-                </div>
-            </li>
-        </ul>
+            <a *ngFor="let recette of recettes" href="#" class="list-group-item list-group-item-action justify-content-around d-flex flex-wrap">
+                        <div class="col-sm-6 d-flex flex-column justify-content-center">
+                            <h4 class="text-center text-md-left">{{recette.nomRecette}}</h4>
+                            <p class="text-center text-md-left">{{recette.description}}</p>
+                        </div>
+                        <div class="image-parent col-sm-6 align-self-sm-center">
+                            <img src={{recette.imageChemin}} class="img-thumbnail" alt="quixote">
+                        </div>
+        </a>
     </div>
 </div>
