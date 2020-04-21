@@ -1,9 +1,9 @@
-<app-navigation></app-navigation>
+<app-navigation (navChoice)="onNavChoice($event)"></app-navigation>
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <app-recettes></app-recettes>
-      <app-achats></app-achats>
+      <app-recettes *ngIf="navChoice === 'recette'"></app-recettes>
+      <app-achats *ngIf="navChoice === 'achat'"></app-achats>
     </div>
   </div>
 </div>

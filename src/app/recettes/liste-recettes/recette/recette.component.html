@@ -1,1 +1,12 @@
-<p>recette works!</p>
+<a 
+    (click)="onSelectedReceipe()"
+    href="#"
+    class="list-group-item list-group-item-action justify-content-around d-flex flex-wrap">
+    <div class="col-sm-6 d-flex flex-column justify-content-center">
+        <h4 class="text-center text-md-left">{{recetteItem.nomRecette}}</h4>
+        <p class="text-center text-md-left">{{recetteItem.description}}</p>
+    </div>
+    <div class="image-parent col-sm-6 align-self-sm-center">
+        <img src={{recetteItem.imageChemin}} class="img-thumbnail" alt="quixote">
+    </div>
+</a>

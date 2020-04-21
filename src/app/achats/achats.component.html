@@ -2,6 +2,11 @@
     <div class="col-sm-12">
         <app-edition-achats></app-edition-achats>
         <hr>
-        <p>Ma liste d'achat</p>
+        <div class="list-group">
+            <a 
+                *ngFor="let ingredient of ingredients;"
+                class="list-group-item list-group-item-action" 
+                style="cursor: pointer">{{ingredient.nom}} - ( {{ingredient.quantite}} )</a>
+        </div>
     </div>
 </div>

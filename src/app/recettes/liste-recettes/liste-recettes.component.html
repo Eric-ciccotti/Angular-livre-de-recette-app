@@ -5,14 +5,9 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-            <a *ngFor="let recette of recettes" href="#" class="list-group-item list-group-item-action justify-content-around d-flex flex-wrap">
-                        <div class="col-sm-6 d-flex flex-column justify-content-center">
-                            <h4 class="text-center text-md-left">{{recette.nomRecette}}</h4>
-                            <p class="text-center text-md-left">{{recette.description}}</p>
-                        </div>
-                        <div class="image-parent col-sm-6 align-self-sm-center">
-                            <img src={{recette.imageChemin}} class="img-thumbnail" alt="quixote">
-                        </div>
-        </a>
+    <app-recette 
+        *ngFor="let recette of recettes" 
+        [recetteItem]="recette"
+        (recetteSelected)="onRecetteSelectedTransfer(recette)"></app-recette>
     </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col">
-        <img src="" alt="" class="img-thumbnail">
+        <img src={{selectedRecette.imageChemin}} alt="" class="img-fluid recette-img">
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <h1>Nom de la recette</h1>
+        <h1>{{selectedRecette.nomRecette}}</h1>
     </div>
 </div>
 <div class="row">
@@ -25,11 +25,11 @@
 </div>
 <div class="row">
     <div class="col">
-        Description
+        {{selectedRecette.description}}
     </div>
 </div>
 <div class="row">
     <div class="col">
-        Ingredients
+        <p>liste ingredients</p>
     </div>
 </div>
