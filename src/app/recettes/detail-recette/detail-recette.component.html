@@ -1,35 +1,39 @@
 <div class="row">
-    <div class="col">
+    <div class="col d-flex justify-content-center">
         <img src={{selectedRecette.imageChemin}} alt="" class="img-fluid recette-img">
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <h1>{{selectedRecette.nomRecette}}</h1>
+        <h1 class="text-center">{{selectedRecette.nomRecette}}</h1>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <div ngbDropdown>
-            <a ngbDropdownToggle class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownRecette" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Gérer la recette
+        <div ngbDropdown class="d-flex justify-content-center">
+            <a ngbDropdownToggle class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownRecette"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gérer la recette
             </a>
-          
+
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownRecette">
-              <a ngbDropdownItem class="dropdown-item" href="#">Acheter</a>
-              <a ngbDropdownItem class="dropdown-item" href="#">Editer la recette</a>
-              <a ngbDropdownItem class="dropdown-item" href="#">Supprimer la recette</a>
+                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('acheter')">Acheter</a>
+                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('editer')">Editer la recette</a>
+                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('supprimer')">Supprimer la recette</a>
             </div>
-          </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        {{selectedRecette.description}}
+        <p class="font-italic text-center">{{selectedRecette.description}}</p>
     </div>
 </div>
 <div class="row">
     <div class="col">
-        <p>liste ingredients</p>
+        <div class="list-group">
+            <a *ngFor="let ingredient of selectedRecette.ingredients;" class="list-group-item list-group-item-action"
+                style="cursor: pointer">{{ingredient.nom}} - ( {{ingredient.quantite}} )</a>
+        </div>
     </div>
 </div>

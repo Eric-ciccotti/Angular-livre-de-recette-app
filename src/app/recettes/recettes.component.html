@@ -2,11 +2,13 @@
     <div class="col-sm-7">
         <app-liste-recettes></app-liste-recettes>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-5 mt-5">
         <app-detail-recette 
             *ngIf="selectedRecette; else info" 
             [selectedRecette]="selectedRecette">
         </app-detail-recette>
-        <ng-template #info>Faites un choix de recette :)</ng-template>
+        <ng-template #info>
+            <p>Faites un choix de recette :)</p>
+        </ng-template>
     </div>
 </div>
