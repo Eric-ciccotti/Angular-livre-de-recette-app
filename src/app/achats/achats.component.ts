@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
+import { AchatsService } from '../shared/achats.service';
+import { RecettesService } from '../shared/recettes.service';
 
 @Component({
   selector: 'app-achats',
@@ -7,16 +9,20 @@ import { Ingredient } from '../shared/ingredient.model';
   styleUrls: ['./achats.component.css']
 })
 export class AchatsComponent implements OnInit {
-  ingredients: Ingredient[] = [
-    new Ingredient('pomme',2),
-    new Ingredient('tomate',5),
-    new Ingredient('oignon',10),
-    new Ingredient('fraise',5)
-  ];
 
-  constructor() { }
+  ingredients: Ingredient[] = [];
+
+  constructor(private achatService: AchatsService) { }
 
   ngOnInit(): void {
+      this.ingredients = this.achatService.onGetIngredients();
+
+      //souscription SI l'évenement enregistre un changement...
+      this.achatService.ingredientsMaj.subscribe(
+        (ingredients: Ingredient[]) => {
+          this.ingredients = ingredients;
+        }
+      )
   }
 
 }

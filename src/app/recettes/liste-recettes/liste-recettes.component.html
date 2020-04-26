@@ -7,7 +7,6 @@
     <div class="col-sm-12">
     <app-recette 
         *ngFor="let recette of recettes" 
-        [recetteItem]="recette"
-        (recetteSelected)="onRecetteSelectedTransfer(recette)"></app-recette>
+        [recetteItem]="recette"></app-recette>
     </div>
 </div>

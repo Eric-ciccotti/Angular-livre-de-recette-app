@@ -18,7 +18,6 @@ export class DetailRecetteComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.selectedRecette);
   }
 
 }

@@ -10,15 +10,15 @@
 </div>
 <div class="row">
     <div class="col">
-        <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div ngbDropdown>
+            <a ngbDropdownToggle class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownRecette" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Gérer la recette
             </a>
           
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">Acheter</a>
-              <a class="dropdown-item" href="#">Editer la recette</a>
-              <a class="dropdown-item" href="#">Supprimer la recette</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownRecette">
+              <a ngbDropdownItem class="dropdown-item" href="#">Acheter</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Editer la recette</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Supprimer la recette</a>
             </div>
           </div>
     </div>
