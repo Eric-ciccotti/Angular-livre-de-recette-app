@@ -18,7 +18,7 @@ export class EditionAchatsComponent implements OnInit {
 
   onAddIngredient() {
     const nom = this.nomIngredient.nativeElement.value;
-    const quantite = this.quantiteIngredient.nativeElement.value;
+    const quantite = +this.quantiteIngredient.nativeElement.value;
     this.achatsService.onAddIngredient({nom: nom, quantite: quantite})
   }
 
