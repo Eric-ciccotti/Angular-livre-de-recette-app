@@ -11,15 +11,15 @@
 <div class="row">
     <div class="col">
         <div ngbDropdown class="d-flex justify-content-center">
-            <a ngbDropdownToggle class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownRecette"
+            <a ngbDropdownToggle class="btn btn-primary dropdown-toggle" role="button" id="dropdownRecette"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Gérer la recette
             </a>
 
-            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownRecette">
-                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('acheter')">Acheter</a>
-                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('editer')">Editer la recette</a>
-                <a ngbDropdownItem class="dropdown-item" href="#" (click)="onDetailAction('supprimer')">Supprimer la recette</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownRecette" style="cursor:pointer">
+                <a ngbDropdownItem class="dropdown-item" (click)="onDetailAction('acheter')">Acheter</a>
+                <a ngbDropdownItem class="dropdown-item" (click)="onDetailAction('editer')">Editer la recette</a>
+                <a ngbDropdownItem class="dropdown-item" (click)="onDetailAction('supprimer')">Supprimer la recette</a>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@ export class DetailRecetteComponent implements OnInit {
       case 'acheter':
         //copie de la recette selectionner : pour eviter que la quantité ajoutée change direct dans detail-recette
         const recetteCopy = _.cloneDeep(this.selectedRecette)
-        this.recettesService.addIngredientsToAchat(this.selectedRecette)
+        this.recettesService.addIngredientsToAchat(recetteCopy)
         break;
 
       case 'editer':
