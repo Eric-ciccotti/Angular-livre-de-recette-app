@@ -12,6 +12,8 @@ import { RecetteComponent } from './recettes/liste-recettes/recette/recette.comp
 import { AchatsComponent } from './achats/achats.component';
 import { EditionAchatsComponent } from './achats/edition-achats/edition-achats.component';
 import { DropdownDirective } from './shared/dropdown.directive';
+import { EditionRecetteComponent } from './recettes/edition-recette/edition-recette.component';
+import { RoutingModule } from './app.routing.module';
 
 
 @NgModule({
@@ -25,12 +27,14 @@ import { DropdownDirective } from './shared/dropdown.directive';
     AchatsComponent,
     EditionAchatsComponent,
     DropdownDirective,
+    EditionRecetteComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

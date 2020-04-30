@@ -6,14 +6,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  @Output() navChoice = new EventEmitter<string>();
-
   collapsed: boolean = true;
   isMenuCollapsed = true;
 
-  onNav(choice) {
-    this.navChoice.emit(choice);
-  }
 
   constructor() { }
 
