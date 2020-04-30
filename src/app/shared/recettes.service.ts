@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Recette } from '../recettes/recettes.model';
 import { Ingredient } from './ingredient.model';
 import { AchatsService } from './achats.service';
+import * as _ from 'lodash';
 
 @Injectable()
 
@@ -31,6 +32,10 @@ export class RecettesService {
   
   getRecette() {
     return this.recettes.slice();
+  }
+
+  getRecetteByIndex(index: number) {
+    return _.cloneDeep(this.recettes[index]);
   }
   
   addIngredientsToAchat(selectedRecette) {  

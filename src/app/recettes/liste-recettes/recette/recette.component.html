@@ -1,6 +1,9 @@
 <a 
     style="cursor:pointer"
     (click)="onSelectedReceipe()"
+    routerLinkActive="active"
+    [routerLink]="['detail', index]"
+  
     class="list-group-item list-group-item-action justify-content-around d-flex flex-wrap">
     <div class="col-sm-6 d-flex flex-column justify-content-center">
         <h4 class="text-center text-md-left">{{recetteItem.nomRecette}}</h4>

@@ -4,11 +4,13 @@ import { AchatsComponent } from './achats/achats.component';
 import { DetailRecetteComponent } from './recettes/detail-recette/detail-recette.component';
 import { EditionRecetteComponent } from './recettes/edition-recette/edition-recette.component';
 import { RecettesComponent } from './recettes/recettes.component';
+import { SelectionRecetteComponent } from './recettes/selection-recette/selection-recette.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/recettes', pathMatch: 'full'},
   {path: 'recettes', component: RecettesComponent, children: [
+    {path: '', component: SelectionRecetteComponent},
     {path: 'detail/:id', component: DetailRecetteComponent},
     {path: 'edition/:id', component: EditionRecetteComponent}
   ]},

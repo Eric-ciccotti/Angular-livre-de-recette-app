@@ -3,6 +3,7 @@ import { Recette } from '../recettes.model';
 import * as _ from "lodash";
 
 import { RecettesService } from 'src/app/shared/recettes.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -11,14 +12,23 @@ import { RecettesService } from 'src/app/shared/recettes.service';
   styleUrls: ['./detail-recette.component.css']
 })
 export class DetailRecetteComponent implements OnInit {
-  @Input() selectedRecette: Recette;
+  selectedRecette: Recette;
+  id: number;
 
-  constructor(private recettesService: RecettesService) {
+  
+  constructor(private recettesService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
 
-
-
   ngOnInit(): void {
+    // this.selectedRecette = this.recettesService.getRecetteByIndex(this.route.snapshot.params['id']);
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.selectedRecette = this.recettesService.getRecetteByIndex(this.id);
+        }
+      )
+
 
   }
 

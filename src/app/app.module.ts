@@ -14,6 +14,7 @@ import { EditionAchatsComponent } from './achats/edition-achats/edition-achats.c
 import { DropdownDirective } from './shared/dropdown.directive';
 import { EditionRecetteComponent } from './recettes/edition-recette/edition-recette.component';
 import { RoutingModule } from './app.routing.module';
+import { SelectionRecetteComponent } from './recettes/selection-recette/selection-recette.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { RoutingModule } from './app.routing.module';
     EditionAchatsComponent,
     DropdownDirective,
     EditionRecetteComponent,
+    SelectionRecetteComponent,
 
   ],
   imports: [
