@@ -50,5 +50,15 @@ export class AchatsService {
     this.ingredientsMaj.next(this.ingredients.slice());
   }
 
+  onUpdateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
+    this.ingredientsMaj.next(this.ingredients.slice());
+  }
+
+  onDeleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientsMaj.next(this.ingredients.slice());
+  }
+
 
 }

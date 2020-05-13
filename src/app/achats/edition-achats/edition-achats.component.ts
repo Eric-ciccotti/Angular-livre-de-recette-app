@@ -12,16 +12,17 @@ export class EditionAchatsComponent implements OnInit, OnDestroy {
   @ViewChild('achatForm', {static: false}) achatForm: NgForm;
   subscription: Subscription;
   editionMode = false;
-  editionModeItemIndex: number;
+  indexIngredientSelect: number;
   ingredientEnEdition;
 
   constructor(private achatsService: AchatsService) { }
 
   ngOnInit(): void {
+    //si je clic sur un ingredient je m'abandonne au flux qui envoi l'index de celui-ci
     this.subscription = this.achatsService.editionIngredient.subscribe(
       (index: number) => {
         this.editionMode = true;
-        this.editionModeItemIndex = index;
+        this.indexIngredientSelect = index;
         this.ingredientEnEdition= this.achatsService.onGetIngredient(index);
         this.achatForm.setValue({
           nomIngredient: this.ingredientEnEdition.nom,
@@ -36,14 +37,26 @@ export class EditionAchatsComponent implements OnInit, OnDestroy {
   }
 
 
-  onAddIngredient() {
+  onSubmitIngredient() {
     const nom = this.achatForm.value.nomIngredient;
     const quantite = +this.achatForm.value.quantiteIngredient;
-    this.achatsService.onAddIngredient({nom: nom , quantite: quantite })
+    if (this.editionMode) {
+      this.achatsService.onUpdateIngredient(this.indexIngredientSelect, {nom: nom , quantite: quantite})
+    } else {
+      this.achatsService.onAddIngredient({nom: nom , quantite: quantite})
+    }
+    this.achatForm.reset();
+    this.editionMode = false;
   }
 
-  onDeleteIngredient() {
+  onClear() {
+    this.achatForm.reset()
+    this.editionMode = false;
+  }
 
+  onDelete() {
+    this.achatsService.onDeleteIngredient(this.indexIngredientSelect);
+    this.onClear();
   }
 
 
