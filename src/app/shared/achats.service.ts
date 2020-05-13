@@ -1,5 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Ingredient } from './ingredient.model';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -7,7 +8,8 @@ import { Ingredient } from './ingredient.model';
 })
 
 export class AchatsService {
-  ingredientsMaj = new EventEmitter<Ingredient[]>();
+  ingredientsMaj = new Subject<Ingredient[]>();
+  editionIngredient = new Subject<number>();
 
   //
   constructor() {}
@@ -19,10 +21,14 @@ export class AchatsService {
     new Ingredient('fraise',5)
   ];
 
+  onGetIngredient(index) {
+    return this.ingredients[index];
+  }
+
   onGetIngredients() {
     return this.ingredients.slice();
   }
-  
+
   onAddIngredient(ingredient: Ingredient, publishChanges = true) {
 
     //est ce que ingredient en parametre === ingredient dans le service ? oui donner index sinon -1
@@ -31,17 +37,17 @@ export class AchatsService {
     if (index === -1) {
       this.ingredients.push(ingredient);
     } else {
-      this.ingredients[index].quantite += ingredient.quantite; 
+      this.ingredients[index].quantite += ingredient.quantite;
     }
-    //pour eviter d'emit des events pour rien (quand on fait onAddIngredients) 
+    //pour eviter d'emit ( de next ) des subject pour rien (quand on fait onAddIngredients)
     if (publishChanges) {
-      this.ingredientsMaj.emit(this.ingredients.slice());
+      this.ingredientsMaj.next(this.ingredients.slice());
     }
   }
-  
+
   onAddIngredients(ingredients: Ingredient[]) {
     ingredients.forEach(ing => this.onAddIngredient(ing, false))
-    this.ingredientsMaj.emit(this.ingredients.slice());
+    this.ingredientsMaj.next(this.ingredients.slice());
   }
 
 

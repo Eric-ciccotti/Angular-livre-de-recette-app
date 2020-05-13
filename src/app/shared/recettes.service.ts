@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recette } from '../recettes/recettes.model';
 import { Ingredient } from './ingredient.model';
 import { AchatsService } from './achats.service';
@@ -7,7 +7,6 @@ import * as _ from 'lodash';
 @Injectable()
 
 export class RecettesService {
-  recetteSelected = new EventEmitter<Recette>()
   
   private recettes: Recette[] = [
     new Recette(
@@ -40,7 +39,7 @@ export class RecettesService {
   
   addIngredientsToAchat(selectedRecette) {  
     this.achatsService.onAddIngredients(selectedRecette.ingredients)
-    this.achatsService.ingredientsMaj.emit(selectedRecette.ingredients)
+    this.achatsService.ingredientsMaj.next(selectedRecette.ingredients)
   }
 
 }

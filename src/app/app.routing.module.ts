@@ -11,8 +11,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/recettes', pathMatch: 'full'},
   {path: 'recettes', component: RecettesComponent, children: [
     {path: '', component: SelectionRecetteComponent},
-    {path: 'detail/:id', component: DetailRecetteComponent},
-    {path: 'edition/:id', component: EditionRecetteComponent}
+    {path: 'nouvelle-recette', component: EditionRecetteComponent},
+    {path: ':id', component: DetailRecetteComponent},
+    {path: ':id/edition', component: EditionRecetteComponent}
   ]},
   {path: 'achats', component: AchatsComponent},
 ];

@@ -16,7 +16,10 @@ export class DetailRecetteComponent implements OnInit {
   id: number;
 
   
-  constructor(private recettesService: RecettesService, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private recettesService: RecettesService, 
+    private router: Router, 
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class DetailRecetteComponent implements OnInit {
         break;
 
       case 'editer':
-        console.log('editer');
+        this.router.navigate(['edition'], {relativeTo: this.route});
         break;
       case 'supprimer':
         console.log('supprimer');
