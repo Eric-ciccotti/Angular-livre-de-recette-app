@@ -1,39 +1,41 @@
 <div class="row">
   <div class="col-sm-12">
+    <form [formGroup]="editionRecetteForm" (ngSubmit)="onSubmit()">
     <div class="form-group row justify-content-center">
-      <button class="btn btn-success m-1">Sauvegarder</button>
+      <button type="submit" class="btn btn-success m-1">Sauvegarder</button>
       <button class="btn btn-secondary m-1">Annuler</button>
     </div>
     <div class="form-group row">
       <label for="nomRecette" class="col-sm-2 col-form-label">Nom</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="nomRcette" placeholder="Nom de recette...">
+        <input formControlName="nomRecette" type="text" class="form-control" id="nomRcette" placeholder="Nom de recette...">
       </div>
     </div>
     <div class="form-group row">
       <label for="imageRecette" class="col-sm-2 col-form-label">URL</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control" id="imageRecette" placeholder="Lien de l'image...">
+        <input formControlName="imageRecette" type="text" class="form-control" id="imageRecette" placeholder="Lien de l'image...">
       </div>
     </div>
+      <div class="form-group">
+        <img [src]="onGetImageUrl()" class="img-fluid mx-auto d-block img-thumbnail" alt="">
+      </div>
     <div class="form-group">
       <label for="descriptionRecette" class="col-form-label">Description: </label>
-      <textarea id="descriptionRecette" row="3" class="form-control" placeholder="Decrivez votre recette..."></textarea>
+      <textarea formControlName="descriptionRecette" id="descriptionRecette" row="3" class="form-control" placeholder="Decrivez votre recette..."></textarea>
     </div>
-    <div class="form-group row">
-      <div class="col-sm-12 d-flex justify-content-between">
 
-          <input type="text" class="form-control mr-1">
+    <div class="form-group row" formArrayName="ingredients">
 
-          <input type="number" class="form-control col-sm-3 mr-1">
-
-
-          <input type="button" class="form-control btn btn-warning col-sm-2" value="X">
-
+      <div *ngFor="let ingredients of ingredientsFormArray.controls; let i=index" [formGroupName]="i" class="col-sm-12 d-flex justify-content-between">
+          <input formControlName="text" type="text" class="form-control mr-1" >
+          <input formControlName="number" type="number" class="form-control col-sm-3 mr-1">
+          <input type="button" class="form-control btn btn-danger col-sm-2" value="X">
       </div>
+
     </div>
+
+
+  </form>
   </div>
-
-
-
 </div>
