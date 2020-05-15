@@ -15,10 +15,10 @@ export class DetailRecetteComponent implements OnInit {
   selectedRecette: Recette;
   id: number;
 
-  
+
   constructor(
-    private recettesService: RecettesService, 
-    private router: Router, 
+    private recettesService: RecettesService,
+    private router: Router,
     private route: ActivatedRoute) {
   }
 
@@ -42,13 +42,15 @@ export class DetailRecetteComponent implements OnInit {
         //copie de la recette selectionner : pour eviter que la quantité ajoutée change direct dans detail-recette
         const recetteCopy = _.cloneDeep(this.selectedRecette)
         this.recettesService.addIngredientsToAchat(recetteCopy)
+        // this.router.navigate(['/achats']);
         break;
 
       case 'editer':
         this.router.navigate(['edition'], {relativeTo: this.route});
         break;
       case 'supprimer':
-        console.log('supprimer');
+        this.recettesService.deleteRecette(this.id);
+        this.router.navigate(['/recettes']);
         break;
     }
   }

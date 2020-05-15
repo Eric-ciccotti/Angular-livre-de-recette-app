@@ -3,11 +3,16 @@ import { Recette } from '../recettes/recettes.model';
 import { Ingredient } from './ingredient.model';
 import { AchatsService } from './achats.service';
 import * as _ from 'lodash';
+import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 
 export class RecettesService {
-  
+  recettesMaj = new Subject<Recette[]>();
+
   private recettes: Recette[] = [
     new Recette(
       'saucisson de loup', 'delicieuse cuisse de loup', 'https://lafaimdeloupca.files.wordpress.com/2018/01/linguines-crecc81meuses-au-citron-brocoli-et-saucisson.jpg',
@@ -26,9 +31,9 @@ export class RecettesService {
         new Ingredient('bouteille de champagne bien mousseux', 1)
       ]),
   ];
-  
+
   constructor(private achatsService: AchatsService) { }
-  
+
   getRecette() {
     return this.recettes.slice();
   }
@@ -36,10 +41,25 @@ export class RecettesService {
   getRecetteByIndex(index: number) {
     return _.cloneDeep(this.recettes[index]);
   }
-  
-  addIngredientsToAchat(selectedRecette) {  
+
+  addIngredientsToAchat(selectedRecette) {
     this.achatsService.onAddIngredients(selectedRecette.ingredients)
     this.achatsService.ingredientsMaj.next(selectedRecette.ingredients)
+  }
+
+  addRecette(recette: Recette) {
+    this.recettes.unshift(recette);
+    this.recettesMaj.next(this.recettes.slice());
+  }
+
+  updateRecette(index: number, nouvelleRecette: Recette) {
+    this.recettes[index] = nouvelleRecette;
+    this.recettesMaj.next(this.recettes.slice());
+  }
+
+  deleteRecette(index: number) {
+    this.recettes.splice(index, 1);
+    this.recettesMaj.next(this.recettes.slice());
   }
 
 }
