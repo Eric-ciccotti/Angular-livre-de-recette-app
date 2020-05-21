@@ -13,6 +13,7 @@ export class AchatsComponent implements OnInit, OnDestroy {
 
   ingredients: Ingredient[] = [];
   private achatSub: Subscription;
+  selectedItem: number;
 
   constructor(private achatService: AchatsService) { }
 
@@ -29,6 +30,7 @@ export class AchatsComponent implements OnInit, OnDestroy {
 
   onEditIngredient(index: number) {
     this.achatService.editionIngredient.next(index);
+    this.selectedItem = index;
   }
 
   ngOnDestroy() {
