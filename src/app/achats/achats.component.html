@@ -5,8 +5,10 @@
     <div class="list-group">
       <ul class="list-group">
         <li *ngFor="let ingredient of ingredients;let i = index" [ngClass]="{'active': selectedItem == i }"
-          class="list-group-item list-group-item-action" style="cursor: pointer" (click)="onEditIngredient(i)">
-          {{ingredient.nom}} - ( {{ingredient.quantite}} )
+          class="list-group-item list-group-item-action
+          d-flex justify-content-between align-items-center" style="cursor: pointer" (click)="onEditIngredient(i)">
+          {{ingredient.nom}}
+          <span class="badge badge-primary badge-pill">{{ingredient.quantite}}</span>
         </li>
       </ul>
     </div>
