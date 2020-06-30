@@ -1,44 +1,54 @@
 <div class="row">
   <div class="col-sm-12">
     <form [formGroup]="editionRecetteForm" (ngSubmit)="onSubmit()">
-    <div class="form-group row justify-content-center">
-      <button type="submit" class="btn btn-success m-1" [disabled]="!editionRecetteForm.valid">Sauvegarder</button>
-      <button class="btn btn-secondary m-1" (click)="onCancel()">Annuler</button>
-    </div>
-    <div class="form-group row">
-      <label for="nomRecette" class="col-sm-2 col-form-label">Nom</label>
-      <div class="col-sm-10">
-        <input formControlName="nomRecette" type="text" class="form-control" id="nomRcette" placeholder="Nom de recette...">
+      <div class="form-group row justify-content-center">
+        <button type="submit" class="btn btn-success m-1"
+          [disabled]="!editionRecetteForm.valid || ingredientsFormArray.controls.length <= 0">Sauvegarder</button>
+        <button class="btn btn-secondary m-1" (click)="onCancel()">Annuler</button>
       </div>
-    </div>
-    <div class="form-group row">
-      <label for="imageRecette" class="col-sm-2 col-form-label">URL</label>
-      <div class="col-sm-10">
-        <input #imageUrl formControlName="imageChemin" type="text" class="form-control" id="imageRecette" placeholder="Lien d'une image...">
+      <div class="form-group row">
+        <label for="nomRecette" class="col-sm-2 col-form-label">Nom</label>
+        <div class="col-sm-10">
+          <input formControlName="nomRecette" type="text" class="form-control" id="nomRcette"
+            placeholder="Nom de recette...">
+        </div>
       </div>
-    </div>
+      <div class="form-group row">
+        <label for="imageRecette" class="col-sm-2 col-form-label">URL</label>
+        <div class="col-sm-10">
+          <input #imageUrl formControlName="imageChemin" type="text" class="form-control" id="imageRecette"
+            placeholder="Lien d'une image...">
+        </div>
+      </div>
       <div class="form-group">
-        <img [src]="imageUrl.value ? imageUrl.value : emptyImage" class="img-fluid mx-auto d-block img-thumbnail" alt="">
+        <img [src]="imageUrl.value ? imageUrl.value : emptyImage" class="img-fluid mx-auto d-block img-thumbnail"
+          alt="">
       </div>
-    <div class="form-group">
-      <label for="description" class="col-form-label">Description: </label>
-      <textarea formControlName="description" id="descriptionRecette" row="3" class="form-control" placeholder="Decrivez votre recette..."></textarea>
-    </div>
+      <div class="form-group">
+        <label for="description" class="col-form-label">Description: </label>
+        <textarea formControlName="description" id="descriptionRecette" row="3" class="form-control"
+          placeholder="Decrivez votre recette..."></textarea>
+      </div>
 
-    <div class="form-group row" formArrayName="ingredients">
+      <div class="form-group row justify-content-center" formArrayName="ingredients">
 
-      <div *ngFor="let ingredients of ingredientsFormArray.controls; let i=index" [formGroupName]="i" class="col-sm-12 d-flex justify-content-between">
-          <input formControlName="nom" type="text" class="form-control mr-1 my-1" >
+        <div *ngFor="let ingredients of ingredientsFormArray.controls; let i=index" [formGroupName]="i"
+          class="col-sm-12 d-flex justify-content-between">
+          <input formControlName="nom" type="text" class="form-control mr-1 my-1">
           <input formControlName="quantite" type="number" class="form-control col-sm-3 mr-1 my-1">
-          <input (click)="onDeleteIngredient(i)" type="button" class="form-control btn btn-danger col-sm-2 my-1" value="X">
+          <input (click)="onDeleteIngredient(i)" type="button" class="form-control btn btn-danger col-sm-2 my-1"
+            value="X">
+        </div>
+
+        <div *ngIf="ingredientsFormArray.controls.length <= 0" class="alert alert-danger" role="alert">
+          Vous devez ajouter au moins un ingredient
+        </div>
       </div>
 
-    </div>
+      <div class="form-group row justify-content-center">
+        <button type="button" class="btn btn-success m-1" (click)="onAddIngredient()">Ajouter un ingredient</button>
+      </div>
 
-    <div class="form-group row justify-content-center">
-      <button type="button" class="btn btn-success m-1" (click)="onAddIngredient()">Ajouter un ingredient</button>
-    </div>
-
-  </form>
+    </form>
   </div>
 </div>
