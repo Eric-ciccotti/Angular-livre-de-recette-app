@@ -1,3 +1,4 @@
+import { DataStorageService } from './../shared/data-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,8 +10,12 @@ export class NavigationComponent implements OnInit {
   collapsed: boolean = true;
   isMenuCollapsed = true;
 
+  sauvegarderRecette() {
+    this.dataSortage.stockerRecette();
+  }
 
-  constructor() { }
+
+  constructor(private dataSortage: DataStorageService) { }
 
   ngOnInit(): void {
   }
