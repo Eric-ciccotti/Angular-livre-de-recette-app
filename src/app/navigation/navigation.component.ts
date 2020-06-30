@@ -10,12 +10,15 @@ export class NavigationComponent implements OnInit {
   collapsed: boolean = true;
   isMenuCollapsed = true;
 
-  sauvegarderRecette() {
-    this.dataSortage.stockerRecette();
+  onSauvegarderRecette() {
+    this.dataSortageService.stockerRecette();
   }
 
+  onRecupererRecette() {
+    this.dataSortageService.recupererRecette();
+  }
 
-  constructor(private dataSortage: DataStorageService) { }
+  constructor(private dataSortageService: DataStorageService) { }
 
   ngOnInit(): void {
   }

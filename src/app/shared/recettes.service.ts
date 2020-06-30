@@ -19,14 +19,14 @@ export class RecettesService {
       [
         new Ingredient('cuisse de loup', 2),
       ]),
-      new Recette('poulet coco', 'délicieux poulet coco avec riz et sauce noix de coco', 'https://www.ptitchef.com/imgupl/recipe/poulet-au-lait-de-coco-et-curry--md-34612p42584.jpg',
+    new Recette('poulet coco', 'délicieux poulet coco avec riz et sauce noix de coco', 'https://www.ptitchef.com/imgupl/recipe/poulet-au-lait-de-coco-et-curry--md-34612p42584.jpg',
       [
         new Ingredient('boite de lait de coco', 1),
         new Ingredient('filet de poulet', 2),
         new Ingredient('sac de riz basmati', 1)
       ]),
     new Recette('merguez au champagne', 'spécialité à base de merguez et de champagne luxueux', 'https://upload.wikimedia.org/wikipedia/commons/f/f4/Merguez_grilled.jpg',
-    [
+      [
         new Ingredient('merguez de qualité dosée', 5),
         new Ingredient('bouteille de champagne bien mousseux', 1)
       ]),
@@ -50,6 +50,11 @@ export class RecettesService {
   addRecette(recette: Recette) {
     this.recettes.unshift(recette);
     this.recettesMaj.next(this.recettes.slice());
+  }
+
+  addRecettes(recettes: Recette[]) {
+    this.recettes = recettes;
+    this.recettesMaj.next(recettes.slice());
   }
 
   updateRecette(index: number, nouvelleRecette: Recette) {
