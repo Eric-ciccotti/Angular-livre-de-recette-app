@@ -2,6 +2,7 @@ import { Recette } from './../recettes/recettes.model';
 import { RecettesService } from './recettes.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,13 @@ export class DataStorageService {
   }
 
   recupererRecette() {
-    this.http.get<Recette[]>('https://livre-recette-exercice.firebaseio.com/recettes.json').subscribe(response => {
-      this.recetteService.addRecettes(response);
-    })
+    return this.http
+      .get<Recette[]>('https://livre-recette-exercice.firebaseio.com/recettes.json')
+      .pipe(
+        tap(recetteRecu => {
+          this.recetteService.addRecettes(recetteRecu);
+        })
+      )
   }
 
 

@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit {
   }
 
   onRecupererRecette() {
-    this.dataSortageService.recupererRecette();
+    this.dataSortageService.recupererRecette().subscribe();
   }
 
   constructor(private dataSortageService: DataStorageService) { }
