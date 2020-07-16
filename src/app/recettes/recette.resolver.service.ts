@@ -19,8 +19,12 @@ export class RecetteResolverService implements Resolve<Recette[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     //le resolver subscribe pour moi automatiquement
+
+    //ici on evite de récupérer à chaque fois les infos du serveurs, si on modifie une recette par exemple
+    //on regarde si le tableau recette n'est pas vide, si il est vide alors on load des recettes , sinon on ne fait rien
     if (this.recette.length === 0) {
       return this.dataStorageService.recupererRecette();
     }
+    return this.recette;
   }
 }

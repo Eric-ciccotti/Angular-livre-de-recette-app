@@ -17,7 +17,7 @@ export class ListeRecettesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.recettes =  this.recettesService.getRecette();
+    this.recettes = this.recettesService.getRecette();
     this.recetteMajSub = this.recettesService.recettesMaj.subscribe(
       (recetteRecu: Recette[]) => {
         this.recettes = recetteRecu;
@@ -28,9 +28,4 @@ export class ListeRecettesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.recetteMajSub.unsubscribe()
   }
-
-
-
-
-
 }
