@@ -38,27 +38,20 @@
     </div>
   </div> -->
 
-  <!-- MODAL TRIGGER -->
-  <button class="btn btn-primary" data-toggle="modal" data-target="#modal" appModal>Launch Modal</button>
-
   <!-- MODAL -->
 
-  <div class="modal" id="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal Title</h5>
-          <button class="close" data-dismiss="modal" appModal>&times;</button>
-        </div>
-        <div class="modal-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam molestias
-          dignissimos omnis
-          architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo accusantium voluptates pariatur illo.
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-dismiss="modal" appModal>Close</button>
-        </div>
-      </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Ooops..!</h4>
     </div>
-  </div>
+    <div class="modal-body text-center">
+      <p>Vous ne pouvez pas "Sauvegarder" vous n'avez pas de recette :(</p>
+      <p>Veuillez créer au moins une recette et réessayer</p>
+    </div>
+    <div class="modal-footer justify-content-center">
+      <button type="button" class="btn btn-success" (click)="modal.close('Save click')">ok j'ai compris !</button>
+    </div>
+  </ng-template>
+
+
 </nav>
