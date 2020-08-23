@@ -3,11 +3,15 @@
     <!-- Tabs Titles -->
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="email" class="fadeIn second" name="email" placeholder="email">
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Sign Up">
-      <input type="submit" class="fadeIn fourth" value="Switch to Login">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" ngModel name="email" email
+        required>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" ngModel
+        name="password" password required minlength="6">
+      <input type="submit" class="fadeIn fourth" value="{{ isLoginMode ? 'Login' : 'Sign up'}}"
+        [disabled]="!authForm.valid" [ngClass]="{'disabled' : !authForm.valid }">
+      <input type="button" class="fadeIn fourth" value="Switch to {{ isLoginMode ? 'Sign up' : 'Login' }}"
+        (click)="onSwitchLogin()">
     </form>
 
     <!-- Remind Passowrd -->
