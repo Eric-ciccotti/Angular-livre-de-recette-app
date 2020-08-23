@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AchatsComponent } from './achats/achats.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     ]
   },
   { path: 'achats', component: AchatsComponent },
+  { path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({
