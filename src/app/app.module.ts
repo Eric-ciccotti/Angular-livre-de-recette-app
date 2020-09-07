@@ -17,6 +17,7 @@ import { EditionRecetteComponent } from './recettes/edition-recette/edition-rece
 import { RoutingModule } from './app.routing.module';
 import { SelectionRecetteComponent } from './recettes/selection-recette/selection-recette.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AuthComponent } from './auth/auth.component';
     EditionRecetteComponent,
     SelectionRecetteComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
