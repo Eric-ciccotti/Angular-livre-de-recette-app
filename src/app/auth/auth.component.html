@@ -1,15 +1,14 @@
+<div class="alert alert-danger mt-4" role="alert" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
+<!-- modal box -->
 <div class="wrapper fadeInDown">
   <div id="formContent" *ngIf="!isLoading">
 
     <div *ngIf="isLoading">
       <app-loading-spinner></app-loading-spinner>
     </div>
-
-    <div class="alert alert-warning" role="alert" *ngIf="error">
-      <p>{{ error }}</p>
-    </div>
-
-    <!-- Tabs Titles -->
 
     <!-- Login Form -->
     <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">

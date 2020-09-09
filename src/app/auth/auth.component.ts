@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { AuthInteface } from './auth-inteface';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
@@ -12,6 +14,8 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   error = null;
 
+  constructor(private authService: AuthService) { }
+
   onSwitchLogin() {
     this.isLoginMode = !this.isLoginMode;
   }
@@ -25,23 +29,29 @@ export class AuthComponent implements OnInit {
     const password = form.value.password;
     this.isLoading = true;
 
+    let authObservable: Observable<AuthInteface>;
+
+    this.isLoading = true;
     if (this.isLoginMode) {
-      //...
+      authObservable = this.authService.signIn(email, password).subscribe;
     } else {
-      this.authService.signUp(email, password).subscribe((responseData) => {
+      authObservable = this.authService.signUp(email, password).subscribe;
+    }
+
+    authObservable.subscribe(
+      responseData => {
         console.log(responseData);
         this.isLoading = false;
-      }, (errorData) => {
-        this.error = 'An error occur ! : ', errorData;
+      }, errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage
         this.isLoading = false;
       });
-      this.isLoading = true;
 
-      form.reset();
-    }
+    form.reset();
   }
 
-  constructor(private authService: AuthService) { }
+
 
   ngOnInit(): void {
   }
