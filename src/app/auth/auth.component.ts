@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthInteface } from './auth-inteface';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -33,9 +33,9 @@ export class AuthComponent implements OnInit {
 
     this.isLoading = true;
     if (this.isLoginMode) {
-      authObservable = this.authService.signIn(email, password).subscribe;
+      authObservable = this.authService.signIn(email, password);
     } else {
-      authObservable = this.authService.signUp(email, password).subscribe;
+      authObservable = this.authService.signUp(email, password);
     }
 
     authObservable.subscribe(
